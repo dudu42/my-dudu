@@ -1,0 +1,162 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct l{
+  int i;
+  int j;
+  struct l *next;
+}node;
+void gg(node *t);
+node* hh(node *aa,node *bb);
+int main(){
+  node *head1=(node *)malloc(sizeof(node));
+  node *head2=(node *)malloc(sizeof(node));
+  head1->next=NULL;
+  head2->next=NULL;
+  gg(head1);
+  gg(head2);
+  node *e;
+  node *ff=hh(head1,head2);
+  node *ww=head1;
+  for(;ww;ww=ww->next){
+  	free(ww);
+  }
+  node *uu=head2;
+  for(;uu;uu=uu->next){
+  	free(uu);
+  }
+  return 0;
+}
+void gg(node *t){
+  int x,y,i=2;
+  while(i){
+    scanf("%d%d",&x,&y);
+    node *p=(node *)malloc(sizeof(node));
+    p->i=x;
+    p->j=y;
+    p->next=NULL;
+    node *last=t;
+    if(last){
+      while(last->next){
+        last=last->next;
+}
+      last->next=p;
+}
+    else{
+      last=p;
+}
+  i--;
+}
+}
+node* hh(node *aa,node *bb){
+  node *cc=aa;
+  node *dd=bb;
+  node *ff=(node *)malloc(sizeof(node));
+  ff->next=NULL;
+  while(cc&&dd){
+    if(cc->j==dd->j){
+      node *rr=(node *)malloc(sizeof(node));
+      node *last=ff;
+      if(last){
+        while(last->next){
+           last=last->next;
+}
+      last->next=rr;
+      last->i=cc->i+dd->i;
+      last->j=cc->j;
+      cc=cc->next;
+      dd=dd->next;
+}
+    else{
+      last->next=rr;
+      last->i=cc->i+dd->i;
+      last->j=cc->j;
+      cc=cc->next;
+      dd=dd->next;
+}
+}
+  else if(cc->j>dd->j){
+      node *rr=(node *)malloc(sizeof(node));
+      node *last=ff;
+      if(last){
+        while(last->next){
+           last=last->next;
+}
+      last->next=rr;
+      last->i=cc->i;
+      last->j=cc->j;
+      cc=cc->next;
+}
+    else{
+      last->next=rr;
+      last->i=cc->i;
+      last->j=cc->j;
+      cc=cc->next;
+}
+       
+}
+  else{  
+      node *rr=(node *)malloc(sizeof(node));
+      node *last=ff;
+      if(last){
+        while(last->next){
+           last=last->next;
+}
+      last->next=rr;
+      last->i=dd->i;
+      last->j=dd->j;
+      dd=dd->next;
+}
+    else{
+      last->next=rr;
+      last->i=dd->i;
+      last->j=dd->j;
+      dd=dd->next;
+}
+}
+}
+  while(cc){
+      node *rr=(node *)malloc(sizeof(node));
+      node *last=ff;
+      if(last){
+        while(last->next){
+           last=last->next;
+}
+      last->next=rr;
+      last->i=cc->i;
+      last->j=cc->j;
+      cc=cc->next;
+}
+    else{
+      last->next=rr;
+      last->i=cc->i;
+      last->j=cc->j;
+      cc=cc->next;
+}
+}
+  while(dd){
+      node *rr=(node *)malloc(sizeof(node));
+      node *last=ff;
+      if(last){
+        while(last->next){
+           last=last->next;
+}
+      last->next=rr;
+      last->i=dd->i;
+      last->j=dd->j;
+      dd=dd->next;
+}
+    else{
+      last->next=rr;
+      last->i=dd->i;
+      last->j=dd->j;
+      dd=dd->next;
+}
+}
+  node *e;
+  for(e=ff;e;e=e->next) {
+    printf("%d %d\n", e->i,e->j);
+}
+  for(e=ff;e;e=e->next) {
+    free(e);
+}
+}
