@@ -1,0 +1,29 @@
+#include <stdio.h> 
+#include <stdlib.h>
+typedef struct t{
+	int v;
+	struct t *left;
+	struct t *right;
+	int flag;
+}tree;
+tree *addt(int x,tree* q){
+	if(!q){
+		q=(tree *)malloc(sizeof(tree));
+		q->v=x;
+		q->left=q->right=NULL; 
+	}
+	else if(x<q->v){
+		q->left=addt(x,q->left);
+	}
+	else if(x>q->v){
+		q->right=addt(x,q->right);
+	}
+	return q;
+}
+
+int main(){
+	int num;
+	scanf("%d",&num);
+	tree *head=NULL;
+	addt(num,head);	
+}
